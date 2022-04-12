@@ -226,7 +226,6 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
                 -system-zlib \
                 -system-sqlite \
                 -plugin-sql-sqlite \
-                -plugin-sql-mysql \
                 -plugin-sql-psql \
                 -qt-freetype \
                 -qt-pcre \
