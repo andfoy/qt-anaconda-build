@@ -24,11 +24,12 @@ source ${MINIFORGE_HOME}/etc/profile.d/conda.sh
 conda activate base
 
 echo -e "\n\nInstalling ['conda-forge-ci-setup=3'] and conda-build."
-mamba install --update-specs --quiet --yes --channel pkgs/main \
-    conda-build pip boa
-mamba update --update-specs --yes --quiet --channel pkgs/main \
-    conda-build pip boa
+conda install --update-specs --quiet --yes --channel pkgs/main \
+    conda-build pip
+conda update --update-specs --yes --quiet --channel pkgs/main \
+    conda-build pip
 
+# conda install --yes -c conda-forge mamba boa
 
 
 # echo -e "\n\nSetting up the condarc and mangling the compiler."
@@ -71,7 +72,7 @@ if [[ "${BUILD_WITH_CONDA_DEBUG:-0}" == 1 ]]; then
     # Drop into an interactive shell
     /bin/bash
 else
-    conda mambabuild ./recipe -m ./.ci_support/${CONFIG}.yaml \
+    conda build ./recipe -m ./.ci_support/${CONFIG}.yaml \
         --suppress-variables ${EXTRA_CB_OPTIONS:-} \
         --clobber-file ./.ci_support/clobber_${CONFIG}.yaml -c pkgs/main
     # ( startgroup "Validating outputs" ) 2> /dev/null

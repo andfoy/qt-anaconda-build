@@ -32,7 +32,7 @@ if [[ "${OSX_SDK_DIR:-}" == "" ]]; then
 fi
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 CI_SUPPORT=$PWD/.ci_support
-source ${SCRIPT_DIR}/cross_compile_support.sh
+# source ${SCRIPT_DIR}/cross_compile_support.sh
 source ${SCRIPT_DIR}/download_osx_sdk.sh
 
 if [[ "$MACOSX_DEPLOYMENT_TARGET" == 10.* && "${USING_SYSTEM_SDK_DIR:-}" == "1" ]]; then

@@ -151,7 +151,7 @@ requirements:
     - nspr                               # [unix]
     - nss                                # [unix]
     - sqlite
-    - mysql-devel                        # [not win]
+    # - mysql-devel                        # [not win]
     - postgresql                         # [not win]
     - zlib
     - libxcb                             # [linux]
