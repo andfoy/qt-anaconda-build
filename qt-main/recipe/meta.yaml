@@ -22,12 +22,17 @@ source:
 
       # The following patches are required to cross-compile Qt host tools (osx)
       # to work both on x86_64 and arm64
-      - patches/0005-Add-arm64-support-for-host-tools.patch             # [arm64 and build_platform != target_platform]
-      - patches/0006-Enable-arm64-x86_64-support-for-qttools.patch      # [arm64 and build_platform != target_platform]
-      - patches/0007-Make-qml-host-tools-to-be-arm64-compatiible.patch  # [arm64 and build_platform != target_platform]
-      - patches/0008-Make-repc-arm64-compatible.patch                   # [arm64 and build_platform != target_platform]
-      - patches/0009-Enable-arm64-support-for-qgltf.patch               # [arm64 and build_platform != target_platform]
-      - patches/0010-Enable-arm64-support-for-qtscxmlc.patch            # [arm64 and build_platform != target_platform]
+      # - patches/0005-Add-arm64-support-for-host-tools.patch             # [arm64 and build_platform != target_platform]
+      # - patches/0006-Enable-arm64-x86_64-support-for-qttools.patch      # [arm64 and build_platform != target_platform]
+      # - patches/0007-Make-qml-host-tools-to-be-arm64-compatiible.patch  # [arm64 and build_platform != target_platform]
+      # - patches/0008-Make-repc-arm64-compatible.patch                   # [arm64 and build_platform != target_platform]
+      # - patches/0009-Enable-arm64-support-for-qgltf.patch               # [arm64 and build_platform != target_platform]
+      # - patches/0010-Enable-arm64-support-for-qtscxmlc.patch            # [arm64 and build_platform != target_platform]
+      - patches/0008-Force-host-to-be-the-same-as-the-target.patch        # [arm64]      
+      - patches/0009-Ensure-no-cross-compilation-checks-are-done.patch    # [arm64]
+      - patches/0010-Try-to-set-arm64-explicitly.patch                    # [arm64]
+      - patches/0011-Prevent-stat64-definition.patch                      # [arm64]
+
       # https://bugreports.qt.io/browse/QTBUG-76777
       # - patches/qcore_for_sdk_10_13_1.patch
 
