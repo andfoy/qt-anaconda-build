@@ -37,7 +37,7 @@ source:
     folder: opengl32sw                                                                                            # [win64]
 
   - git_url: https://code.qt.io/qt/qtwebengine.git
-    git_rev: v{{ version }}-lts
+    git_rev: v{{ webengine_version }}-lts
     folder: qtwebengine
 
   - git_url: https://code.qt.io/qt/qtwebengine-chromium.git
