@@ -390,6 +390,18 @@ outputs:
         - test/webengine/main.qml
         - test/webengine/qtwebengine.pro
 
+  - name: qt
+    version: {{ version }}
+    build:
+      run_exports:
+        - {{ pin_subpackage('qt', max_pin='x.x') }}
+    requirements:
+      run:
+        - {{ pin_compatible("qt-main", max_pin="x.x") }}
+        - {{ pin_compatible("qt-webengine", max_pin="x.x") }}
+      run_constrained:
+        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.14") }}  # [osx and x86_64]
+
 about:
   home: http://qt.io
   license: LGPL-3.0-only
