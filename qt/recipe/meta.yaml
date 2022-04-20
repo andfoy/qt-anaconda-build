@@ -341,7 +341,7 @@ outputs:
         - zlib
         - libxcb                             # [linux]
         - qt-main
-        - libwebp
+        # - libwebp
         - openssl                            # [win]
       run:
         - {{ pin_compatible("qt-main", max_pin="x.x") }}
