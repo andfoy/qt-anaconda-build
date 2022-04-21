@@ -68,6 +68,11 @@ outputs:
     build:
       run_exports:
         - {{ pin_subpackage('qt-main', max_pin='x.x') }}
+      ignore_run_exports:
+        - openssl
+        - krb5
+        - nss
+        - nspr
       missing_dso_whitelist:  # [osx]
         - /usr/lib/libbsm.0.dylib  # [osx]
         - /usr/lib/libcups.2.dylib  # [osx]
@@ -326,19 +331,19 @@ outputs:
         - dbus                               # [linux]
         - fontconfig                         # [linux]
         - freetype                           # [linux]
-        - gst-plugins-base
-        - gstreamer
+        # - gst-plugins-base
+        # - gstreamer
         - libglib                            # [linux]
         - libxml2                            # [linux]
         - libxkbcommon                       # [linux]
         - expat                              # [linux]
         - libevent                           # [linux]
-        - icu
-        - libpng
+        # - icu
+        # - libpng
         - libiconv
         - nspr                               # [unix]
-        - nss                                # [unix]
-        - sqlite
+        # - nss                                # [unix]
+        # - sqlite
         - zlib
         - libxcb                             # [linux]
         - qt-main
