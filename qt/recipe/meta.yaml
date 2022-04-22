@@ -326,7 +326,7 @@ outputs:
         # errors or would be impossible.
         # - jpeg
         - pulseaudio                         # [linux]
-        - gstreamer
+        # - gstreamer
         - pthread-stubs                      # [linux]
         - dbus                               # [linux]
         - fontconfig                         # [linux]
@@ -340,11 +340,11 @@ outputs:
         - libevent                           # [linux]
         # - icu
         # - libpng
-        - libiconv
-        - nspr                               # [unix]
+        # - libiconv
+        # - nspr                               # [unix]
         # - nss                                # [unix]
         # - sqlite
-        - zlib
+        # - zlib
         - libxcb                             # [linux]
         - qt-main
         # - libwebp
