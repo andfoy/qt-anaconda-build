@@ -1,0 +1,76 @@
+{% set name = "sip" %}
+{% set version = "6.5.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 204f0240db8999a749d638a987b351861843e69239b811ec3d1881412c3706a6
+
+build:
+  number: 2
+  script: "{{ PYTHON }} -m pip install . -vv"  # [win]
+  run_exports:
+    - {{ pin_subpackage('sip', max_pin='x.x') }}
+  entry_points:
+    - sip-distinfo = sipbuild.distinfo.main:main
+    - sip-module = sipbuild.module.main:main
+    - sip-build = sipbuild.tools.build:main
+    - sip-install = sipbuild.tools.install:main
+    - sip-sdist = sipbuild.tools.sdist:main
+    - sip-wheel = sipbuild.tools.wheel:main
+
+requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make  # [not win]
+  host:
+    - python
+    - pip
+    - packaging
+    - toml
+  run:
+    - python
+    - packaging
+    - toml
+
+test:
+  requires:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make  # [not win]
+    - pip
+  commands:
+    - pip check
+    - sip-build --help
+  imports:
+    - sipbuild
+  files:
+    - test
+
+about:
+  home: https://www.riverbankcomputing.com/software/sip/
+  license: GPL-3.0-only
+  license_family: GPL
+  license_file: LICENSE-GPL3
+  summary: 'A Python bindings generator for C/C++ libraries'
+  description: |
+    SIP is a collection of tools that makes it very easy to create Python
+    bindings for C and C++ libraries. It was originally developed in 1998
+    to create PyQt, the Python bindings for the Qt toolkit, but can be
+    used to create bindings for any C or C++ library. For example it is
+    also used to generate wxPython, the Python bindings for wxWidgets.
+  doc_url: https://www.riverbankcomputing.com/software/sip/
+
+extra:
+  recipe-maintainers:
+    - andfoy
+    - ccordoba12
+    - mingwandroid
+    - msarahan
+    - ocefpaf
