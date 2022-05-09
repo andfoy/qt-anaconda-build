@@ -103,6 +103,9 @@ outputs:
     script: build-pyqt.sh  # [not win]
     script: bld-pyqt.bat  # [win]
     build:
+      ignore_run_exports:
+          - python
+          - sip
       run_exports:
         - {{ pin_subpackage('pyqt', max_pin='x.x') }}
     requirements:
@@ -206,6 +209,10 @@ outputs:
     script: build-pyqtwebengine.sh  # [not win]
     script: bld-pyqtwebengine.bat  # [win]
     build:
+      ignore_run_exports:
+          - pyqt
+          - python
+          - sip
       run_exports:
         - {{ pin_subpackage('pyqtwebengine', max_pin='x.x') }}
     requirements:
@@ -291,6 +298,10 @@ outputs:
     script: build-pyqtcharts.sh  # [not win]
     script: bld-pyqtcharts.bat  # [win]
     build:
+      ignore_run_exports:
+          - pyqt
+          - python
+          - sip
       run_exports:
         - {{ pin_subpackage('pyqtchart', max_pin='x.x') }}
     requirements:
