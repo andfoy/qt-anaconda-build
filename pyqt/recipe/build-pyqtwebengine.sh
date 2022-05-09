@@ -50,11 +50,12 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
   rm Makefile
   mv Makefile.temp Makefile
 
-  # For some reason SIP does not add the QtPrintSupport headers
-  cat QtWebEngineWidgets/Makefile | sed -r 's|INCPATH       =(.*)|INCPATH       =\1 -I'$PREFIX/include/qt/QtPrintSupport'|' > QtWebEngineWidgets/Makefile.temp
-  rm QtWebEngineWidgets/Makefile
-  mv QtWebEngineWidgets/Makefile.temp QtWebEngineWidgets/Makefile
 fi
+
+# For some reason SIP does not add the QtPrintSupport headers
+cat QtWebEngineWidgets/Makefile | sed -r 's|INCPATH       =(.*)|INCPATH       =\1 -I'$PREFIX/include/qt/QtPrintSupport'|' > QtWebEngineWidgets/Makefile.temp
+rm QtWebEngineWidgets/Makefile
+mv QtWebEngineWidgets/Makefile.temp QtWebEngineWidgets/Makefile
 
 CPATH=$PREFIX/include make -j$CPU_COUNT
 make install
